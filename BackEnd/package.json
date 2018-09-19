@@ -1,0 +1,20 @@
+{
+  "name": "pharmacy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no tests specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Thirundi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "body-parser": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
