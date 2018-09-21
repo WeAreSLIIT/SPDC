@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const medicines =require('./routes/medicines');
+const medicines =require('./routes/orders');
+const medicines =require('./routes/users');
 
 const config = require('./config/config');
 
