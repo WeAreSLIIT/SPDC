@@ -2,7 +2,7 @@ const config = {
     app : {
         port : 3000
     },
-    db:'mongodb://localhost:27017/pharmacy'
+    db:'mongodb://ravindu:ML159159@ds163182.mlab.com:63182/pharmacy'
     
 }
 
