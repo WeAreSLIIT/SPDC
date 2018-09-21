@@ -13,13 +13,13 @@ const OrderSchema = new Schema ({
         required : true
     },
     
-    items : [
+    medicines : [
         {
             id : Number,
             qty : Number
         }
     ],
-    price : {
+    amount : {
         type:Number,
         default : 0
     },
