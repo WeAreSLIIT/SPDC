@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const medicines =require('./routes/medicines');
-const medicines =require('./routes/orders');
-const medicines =require('./routes/users');
+const orders =require('./routes/orders');
+const users =require('./routes/users');
 
 const config = require('./config/config');
 
@@ -27,6 +27,8 @@ app.get("/user",(req,res)=>{
 });
 
 app.use('/medicines' , medicines);
+app.use('/users' , users);
+app.use('/orders' , orders);
 
 app.listen(process.env.port || config.app.port ,()=>{
     console.log("Server is listening in port 3000 !");
