@@ -15,9 +15,9 @@ mongoose.Promise = global.Promise;
 mongoose.connection.on("connected", () => {
     console.log(`connected to database ${config.db}`);
   });
-  mongoose.connection.on("error", err => {
+mongoose.connection.on("error", err => {
     console.log(`database connection failed ${err}`);
-  });
+});
 
 app.get("/",(req,res)=>{
     res.send("Hellow World");
