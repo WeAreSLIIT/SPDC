@@ -6,6 +6,7 @@ const app = express();
 const medicines =require('./routes/medicines');
 const orders =require('./routes/orders');
 const users =require('./routes/users');
+const points =require('./routes/points');
 
 const config = require('./config/config');
 
@@ -29,6 +30,7 @@ app.get("/user",(req,res)=>{
 app.use('/medicines' , medicines);
 app.use('/users' , users);
 app.use('/orders' , orders);
+app.use('/points' , points);
 
 app.listen(process.env.port || config.app.port ,()=>{
     console.log("Server is listening in port 3000 !");
