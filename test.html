@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form class="was-validated">
+            <div class="form-group">
+                <label for="medicineID">Medicine ID</label>
+                <input type="number" class="form-control" id="medicineID" placeholder="Medicine ID" required>
+                <div class="invalid-feedback">Invalid Medicine ID</div>
+            </div>
+            <div class="form-group">
+                <label for="medicineName">Medicine Name</label>
+                <input type="text" class="form-control" id="medicineName" placeholder="Medicine Name" required>
+                <div class="invalid-feedback">Invalid Medicine Name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="medicineDescription">Example textarea</label>
+                <textarea class="form-control" id="medicineDescription" rows="3" placeholder="Medicine Description"></textarea>
+                <div class="invalid-feedback">Invalid Medicine Description</div>
+            </div>
+
+            <div class="form-group">
+                <label for="medicinePrice">Medicine Price</label>
+                <input type="number" step="0.01" class="form-control" id="medicinePrice" placeholder="Medicine Price"
+                    required>
+                <div class="invalid-feedback">Invalid Medicine Price</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+        </form>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Panadol</td>
+                    <td>2.00</td>
+                    <td>
+                        <div class="btn-group">
+                            <div class="btn btn-sm btn-success">Info</div>
+                            <div class="btn btn-sm btn-warning">Edit</div>
+                            <div class="btn btn-sm btn-danger">Delete</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td>2</td>
+                        <td>Paracitomol</td>
+                        <td>1.50</td>
+                        <td>
+                            <div class="btn-group">
+                                <div class="btn btn-sm btn-success">Info</div>
+                                <div class="btn btn-sm btn-warning">Edit</div>
+                                <div class="btn btn-sm btn-danger">Delete</div>
+                            </div>
+                        </td>
+                </tr>
+                <tr>
+                        <td>3</td>
+                        <td>Periton</td>
+                        <td>3.00</td>
+                        <td>
+                            <div class="btn-group">
+                                <div class="btn btn-sm btn-success">Info</div>
+                                <div class="btn btn-sm btn-warning">Edit</div>
+                                <div class="btn btn-sm btn-danger">Delete</div>
+                            </div>
+                        </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
