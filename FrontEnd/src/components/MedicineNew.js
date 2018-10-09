@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import medicineNew from './MedicineNew.jsx';
 import Axios from 'axios';
 import config from '../config/config';
@@ -6,29 +6,30 @@ import config from '../config/config';
 class MedicineNew extends Component {
     constructor(props) {
         super(props);
+        
         this.state = {
             medicineId: 0,
-            medicine: {
-                id: null,
-                name: '',
-                description: '',
-                price : null,
+            medicine : {
+                id :0 ,
+                name : '',
+                description : '',
+                price :0
             }
         }
-        let id = parseInt( String(this.props.match.params.id),10);
-        console.log('This is id' + id);
-        if(id!=='New' || id !=='List'){
+        let id = this.props.match.params.id;
+
+        if(id!=='New' || id !=='List'|| isNaN(id)){
             
             this.loadMedicine(id);
-            this.setState({medicineId : id});
-            console.log(this.state.medicineId);
+            this.state.medicineId = parseInt(id,10);
+
             }
         else{
-            alert('The fuck');
             this.setState({medicineId : 0});
         }
     }
     loadMedicine(id){
+        if(id !== undefined)
         Axios.get(config.api+'medicines/'+ id).then(data => {
             this.setState({
               medicine: data.data[0]
@@ -90,8 +91,8 @@ class MedicineNew extends Component {
         );
     }
     updateMedicine() {
-        console.log(config.api+'medicines/'+this.id);
-        Axios.put(config.api+'medicines/'+this.id, this.state.medicine).then(data => {
+        console.log(config.api+'medicines/'+this.state.medicineId);
+        Axios.put(config.api+'medicines/'+this.state.medicineId, this.state.medicine).then(data => {
             console.log(data);
             alert('Updating data success');
             this.props.history.push('List');

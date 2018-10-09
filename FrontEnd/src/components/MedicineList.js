@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import medicineList from './MedicineList.jsx';
 import axios from "axios";
 import config from '../config/config' ;
@@ -14,11 +14,9 @@ class MedicineList extends Component {
 
   loadMedicineList() {
    axios.get(config.api+'medicines').then(data => {
-      this.setState({
-        medicines: data.data
-      });
+     this.setState({medicines:data.data});
     });
-    console.log(this.state.medicines);
+
   }
 
   onDelete(id){
@@ -37,11 +35,11 @@ class MedicineList extends Component {
     
     this.props.history.push(''+id);
   }
-  onView(id){
+  onView(){
 
   }
   componentWillUnmount() {
-    this.loadMedicineList();
+    //this.loadMedicineList();
   }
 
   componentDidMount() {
