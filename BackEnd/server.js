@@ -1,6 +1,7 @@
 const express= require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const medicines =require('./routes/medicines');
@@ -19,6 +20,7 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", err => {
     console.log(`database connection failed ${err}`);
 });
+app.use(cors());
 
 app.get("/",(req,res)=>{
     res.send("Hellow World");

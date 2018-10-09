@@ -5,7 +5,7 @@ const render = function() {
 
     return (
         <div>
-            <Navigation></Navigation>
+            
             <Main>
 
             </Main>

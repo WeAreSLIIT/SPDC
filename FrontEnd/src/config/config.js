@@ -1,5 +1,4 @@
 const config =  {
-    api: 'localhost:5000/employees'
+    api: 'http://localhost:4000/'
 }
-
 module.exports = config;
