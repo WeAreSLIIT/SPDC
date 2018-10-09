@@ -25,7 +25,7 @@ class MedicineList extends Component {
     if(id){
       axios.delete(config.api+'medicines/'+id).then(data => {
         let medicines = this.state.medicines;
-        let index = medicines.findIndex(x => x.id == id);
+        let index = medicines.findIndex(x => x.id === id);
         medicines.splice(index, 1);
         this.setState({ medicines: medicines });
         alert(data);

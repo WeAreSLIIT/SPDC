@@ -15,14 +15,12 @@ class MedicineNew extends Component {
                 price : null,
             }
         }
-        let id = parseInt( String(this.props.match.params.id));
+        let id = parseInt( String(this.props.match.params.id),10);
         console.log('This is id' + id);
-        if(id!='New' || id !='List'){
+        if(id!=='New' || id !=='List'){
             
             this.loadMedicine(id);
-            this.setState({
-                medicineId : 5
-            });
+            this.setState({medicineId : id});
             console.log(this.state.medicineId);
             }
         else{
@@ -40,7 +38,7 @@ class MedicineNew extends Component {
     onFormSubmit(e) {
         e.preventDefault();
         
-        if(this.id!=0)
+        if(this.id!==0)
             this.updateMedicine();
         else this.insertMedicine();
     }

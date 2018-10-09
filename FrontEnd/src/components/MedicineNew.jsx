@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table,Form, Button, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
+import { Form, Button, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
 const render = function () {
 
     return (

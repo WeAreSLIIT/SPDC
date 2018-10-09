@@ -1,6 +1,6 @@
 import React from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, NavLink, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
+import { Link } from "react-router-dom";
 const render = function () {
 
   return (
@@ -11,10 +11,10 @@ const render = function () {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-            <NavLink><Link to="/Medicine/New">Add New</Link></NavLink>
+          <Link className="nav-link" to="/Medicine/New">Add New</Link>
             </NavItem>
             <NavItem>
-              <NavLink><Link to="/Medicine/List">View List</Link></NavLink>
+            <Link  className="nav-link" to="/Medicine/List">View List</Link>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 import MedicineNew from './MedicineNew';
 import MedicineList from './MedicineList';
 import Navigation from './Navigation';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 const render = function () {
 
   return (
