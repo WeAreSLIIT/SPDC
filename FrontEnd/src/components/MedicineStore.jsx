@@ -96,6 +96,7 @@ const render = function () {
                 <ModalFooter>
                     <ButtonGroup>  
                         <Button color="success" onClick={this.toggle}><i className="fas fa-credit-card"></i> Checkout</Button>
+                        <Button color="warning" onClick={this.saveOrder.bind(this)}><i className="fas fa-save "></i> Save</Button>
                         <Button color="danger" onClick={this.toggle} ><i className="fas fa-sign-out-alt"></i> Discard</Button>
                     </ButtonGroup>    
                     
