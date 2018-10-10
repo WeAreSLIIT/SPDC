@@ -1,11 +1,27 @@
 import React from 'react';
-import { Row, Col, Button, InputGroup,InputGroupAddon , InputGroupText, Input, Card, CardBody, CardTitle, Badge } from 'reactstrap';
+import { Row, Col, Button, InputGroup, InputGroupAddon, InputGroupText, Input, Card, CardBody, CardTitle, Badge, Modal, ModalBody, ModalFooter, ModalHeader,Table, ButtonGroup } from 'reactstrap';
 const render = function () {
+    let cartItems;
+    if(this.state.cart.length>0){
+        cartItems = this.state.cart.map(i=>{
+            return (
+                <tr key={i.id}>
+                <th scope="row">{i.id}</th>
+                <td><img src={"images/" + ((i.id % 7) + 1) + ".png"} alt="Smiley face" height="36" width="36"/></td>
+                <td>{this.state.medicines.filter(m=>m.id===i.id)[0].name}</td>
+                <td>{i.qty}</td>
+                <td>
+                    <Button color='light' onClick={this.onDelete.bind(this, i.id)} ><i className="fas fa-trash-alt "></i></Button>
+                </td>
+             </tr>
+            );
+        });
+    }
     let medicines;
-    medicines = this.state.medicines.map(m => {
+    medicines = this.state.medicines.map((m,i) => {
         return (
             <Col key={m.id} xs='12' sm='6' md='4'>
-                <div className="image-flip" ontouchstart="this.classList.toggle('hover');">
+                <div className="image-flip" >
                     <div className="mainflip">
                         <div className="frontside">
                             <Card>
@@ -24,15 +40,17 @@ const render = function () {
                                     <CardTitle><Badge color="info" >#{m.id}</Badge></CardTitle>
                                     <CardTitle>{m.name}</CardTitle>
                                     <p className="card-text">{m.description}</p>
-                                    <InputGroup size="sm">
-                                        <InputGroupAddon addonType="prepend">
-                                            <InputGroupText>Qty</InputGroupText>
-                                        </InputGroupAddon>
-                                        <Input type="number" placeholder="Quantity" />
-                                        <InputGroupAddon addonType="append">
-                                            <Button color="success">Add To Cart</Button>
-                                        </InputGroupAddon>
-                                    </InputGroup>
+                                    <form onSubmit={this.addToCart.bind(this,m.id)}> 
+                                        <InputGroup size="sm">
+                                            <InputGroupAddon addonType="prepend">
+                                                <InputGroupText>Qty</InputGroupText>
+                                            </InputGroupAddon>
+                                            <Input type="number" defaultValue="0" onChange={this.onHandleQty.bind(this,m.id)} placeholder="Quantity" />
+                                            <InputGroupAddon addonType="append">
+                                                <Button color="success">Add To Cart</Button>
+                                            </InputGroupAddon>
+                                        </InputGroup>
+                                    </form>
                                 </CardBody>
                             </Card>
                         </div>
@@ -46,6 +64,43 @@ const render = function () {
 
         <Row>
             {medicines}
+            <a className="float" onClick={this.toggle}>
+                <i className="fa fa-shopping-cart my-float"></i>
+            </a>
+
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                <ModalHeader toggle={this.toggle}>Your Cart</ModalHeader>
+                <ModalBody>
+                    <Table hover>
+                        <thead>
+                            <tr className="bg-info">
+                                <th>#</th>
+                                <th></th>
+                                <th>Medicine</th>
+                                <th>Qty</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {cartItems}
+                            <tr className="bg-dark">
+                                <td></td>
+                                <td></td>
+                                <td><b>Total Amount:</b></td>
+                                <td></td>
+                                <td><b>{this.state.amount.toFixed(2)}/=</b></td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </ModalBody>
+                <ModalFooter>
+                    <ButtonGroup>  
+                        <Button color="success" onClick={this.toggle}><i className="fas fa-credit-card"></i> Checkout</Button>
+                        <Button color="danger" onClick={this.toggle} ><i className="fas fa-sign-out-alt"></i> Discard</Button>
+                    </ButtonGroup>    
+                    
+                </ModalFooter>
+            </Modal>
         </Row>
 
     );

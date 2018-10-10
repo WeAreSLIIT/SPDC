@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React,{ Component } from 'react';
 import medicineStore from './MedicineStore.jsx';
 import axios from "axios";
 import config from '../config/config' ;
@@ -8,9 +8,53 @@ class MedicineStore extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      medicines: []
+      qty:[],
+      modal: false,
+      medicines: [],
+      cart:[],
+      amount: 0
     }
+
+    this.qty = React.createRef();
+    this.toggle = this.toggle.bind(this);
    
+  }  
+      
+  addToCart(id,e){
+    e.preventDefault();
+    let item = {
+      id : id,
+      qty : parseInt( this.state.qty[id],10)
+    }
+    let cart = this.state.cart;
+    let index = cart.map(i=>i.id).indexOf(item.id);
+    if(index>-1){
+      cart[index].qty += item.qty;
+    }
+    else 
+      cart.push(item);
+    this.setState({cart : cart})
+    this.calculateTotal();
+    console.log(this.state.cart);
+  }
+
+  onHandleQty(id,e){
+    let qtys= this.state.qty;
+    qtys[id] = e.target.value;
+    this.setState({qty:qtys});
+  }
+  calculateTotal(){
+    let amount=0;
+    this.state.cart.map(i=>amount+=(i.qty*parseFloat(this.state.medicines.filter(m=>m.id===i.id)[0].price,10)));
+    this.setState({
+      amount:amount
+    });
+  }
+  toggle() {
+    
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   loadMedicineList() {
@@ -22,20 +66,14 @@ class MedicineStore extends Component {
 
   onDelete(id){
     if(id){
-      axios.delete(config.api+'medicines/'+id).then(data => {
-        let medicines = this.state.medicines;
-        let index = medicines.findIndex(x => x.id === id);
-        medicines.splice(index, 1);
-        this.setState({ medicines: medicines });
-        alert(`${data.data.id} - ${data.data.name} Deleted!`);
-      });
-      
+        let cart = this.state.cart;
+        let index = cart.findIndex(x => x.id === id);
+        cart.splice(index, 1);
+        this.setState({ cart: cart });
+        this.calculateTotal();
     }
   }
-  onUpdate(id){
-    
-    this.props.history.push(''+id);
-  }
+ 
   onView(){
 
   }

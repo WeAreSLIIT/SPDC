@@ -131,3 +131,50 @@ section .section-title {
 .row {
   margin-top : 2rem;
 }
+
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float {
+
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: white;
+
+}
+
+.modal-content {
+    border-radius: 0;
+}
+
+.modal-header{
+    border-radius: 0;
+    background: #28b7dd;
+    color: white;
+
+}
+
+.modal-footer{
+    justify-content: center;
+}
+
+.bg-dark {
+   color: white;
+}
+
+.table {
+    
+    border: 1px solid #0000001a;
+
+}
