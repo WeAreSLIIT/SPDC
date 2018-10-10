@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, InputGroup,InputGroupAddon , InputGroupText, Input, Card, CardBody, CardTitle } from 'reactstrap';
+import { Row, Col, Button, InputGroup,InputGroupAddon , InputGroupText, Input, Card, CardBody, CardTitle, Badge } from 'reactstrap';
 const render = function () {
     let medicines;
     medicines = this.state.medicines.map(m => {
@@ -11,15 +11,17 @@ const render = function () {
                             <Card>
                                 <CardBody className="text-center">
                                     <p><img className="img-fluid" src={"images/" + ((m.id % 7) + 1) + ".png"} alt="Medicine" /></p>
+                                    <CardTitle><Badge color="warning" >#{m.id}</Badge></CardTitle>
                                     <CardTitle>{m.name}</CardTitle>
                                     <p className="card-text">{m.description} </p>
-                                    <Button color="warning">Rs. {m.price.toFixed(2)}/=</Button>
+                                    <Button color="dark">Rs. {m.price.toFixed(2)}/=</Button>
                                 </CardBody>
                             </Card>
                         </div>
                         <div className="backside">
                             <Card>
                                 <CardBody className="text-center mt-4">
+                                    <CardTitle><Badge color="info" >#{m.id}</Badge></CardTitle>
                                     <CardTitle>{m.name}</CardTitle>
                                     <p className="card-text">{m.description}</p>
                                     <InputGroup size="sm">

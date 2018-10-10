@@ -11,10 +11,13 @@ const render = function () {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-          <Link className="nav-link" to="/Medicine/New">Add New</Link>
+              <Link className="nav-link" to="/Medicine/New">Add New</Link>
             </NavItem>
             <NavItem>
-            <Link  className="nav-link" to="/Medicine/List">View List</Link>
+              <Link className="nav-link" to="/Medicine/List">View List</Link>
+            </NavItem>
+            <NavItem>
+              <Link className="nav-link" to="/Store">Store</Link>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
