@@ -19,7 +19,7 @@ const render = function () {
             <Route path="/Medicine/List" component={MedicineList} />  
             <Route path="/Medicine/:id" component={MedicineNew} />
             <Route path="/Store" component={MedicineStore} />  
-
+          
           </Switch>
 
         </Container>

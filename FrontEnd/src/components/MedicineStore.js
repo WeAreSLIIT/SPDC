@@ -40,6 +40,17 @@ class MedicineStore extends Component {
     console.log(this.state.cart);
   }
 
+  onToken = (token) => {
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then(response => {
+      response.json().then(data => {
+        alert(`We are in business, ${data.email}`);
+      });
+    });
+  }
+
   saveOrder() {
     if (this.state.cart.length > 0) {
       let order = {
