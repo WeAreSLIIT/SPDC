@@ -1,9 +1,10 @@
 import { Component } from 'react';
-import medicineList from './MedicineList.jsx';
+import medicineStore from './MedicineStore.jsx';
 import axios from "axios";
 import config from '../config/config' ;
+import './MedicineStore.css';
 
-class MedicineList extends Component {
+class MedicineStore extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,8 +47,8 @@ class MedicineList extends Component {
     this.loadMedicineList();
   }
 
-  render = medicineList;
+  render = medicineStore;
 }
 
 
-export default MedicineList;
+export default MedicineStore; 
