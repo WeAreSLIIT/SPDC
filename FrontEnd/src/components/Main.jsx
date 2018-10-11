@@ -20,23 +20,26 @@ const render = function () {
         <Navigation></Navigation>
         <Container>
         {
+          
           (this.auth.isLoggedIn) ? (
-            (this.auth.isAdmin) ? (
+            
+            (this.auth.isAdmin)? (
               <Switch>
-                <Route path="/" component={ViewUser} />
-                <Route path="/Medicine/List" component={MedicineList} />  
-                <Route path="/Medicine/:id" component={MedicineNew} />
-                <Route path="/UserProfile/:username" component={UserProfile} />
+                
+                <Route exact path="/" component={ViewUser} />
+                <Route exact path="/Medicine/List" component={MedicineList} />  
+                <Route exact path="/Medicine/:id" component={MedicineNew} />
+                <Route exact path="/UserProfile/:username" component={UserProfile} />
               </Switch>
             ) : (
               <Switch>
-                <Route path="/" component={MedicineStore} /> 
+                <Route exact path="/" component={MedicineStore} /> 
               </Switch>
             )
           ) : (
             <Switch>
-              <Route path="/" component={SignIn} />
-              <Route path="/SignUp" component={SignUp} />
+              <Route exact path="/" component={SignIn} />
+              <Route exact path="/SignUp" component={SignUp} />
             </Switch>
           )
         } 
