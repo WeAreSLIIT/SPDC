@@ -20,10 +20,23 @@ router.get("/username/:username", (req, res) => {
     });
 });
 
+router.post("/paid/:username", (req, res) => {
+    Order.findOne({ username: req.params.username, status: 'Pending' }).then(order => {
+        if(order!==null){
+            Order.update({ username: req.params.username, status: 'Pending' },{status:'Paid'}).then(()=>{
+                Order.findOne({ username: req.params.username, status: 'Paid' }).then(order => {
+                    res.send(order);
+                });
+            }
+            );
+        }
+    });
+});
+
 router.post("/", (req, res) => {
 
     Order.findOneAndUpdate({ username: req.body.username, status: 'Pending' }, req.body).then((data) => {
-        
+
         if (data !== null) {
             Order.findOne({ username: req.body.username, status: 'Pending' }).then(order => {
                 res.send(order);

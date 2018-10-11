@@ -41,14 +41,15 @@ class MedicineStore extends Component {
   }
 
   onToken = (token) => {
-    fetch('/save-stripe-token', {
-      method: 'POST',
-      body: JSON.stringify(token),
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`);
+    if(token){
+      axios.post(config.api + 'orders/paid/'+this.state.username,token).then(data => {
+        this.setState({
+          cart:[],
+          amount:0
+        });
+        this.toggle();
       });
-    });
+    }
   }
 
   saveOrder() {
