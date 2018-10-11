@@ -8,7 +8,7 @@ class MedicineStore extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'samith',
+      username: 'ramith',
       status : 'Pending',
       qty: [],
       modal: false,
@@ -101,9 +101,9 @@ class MedicineStore extends Component {
       axios.get(config.api + 'orders/username/'+this.state.username).then(data => {
         console.log(data);
         this.setState({ 
-          status: data.data.status,
-          amount: data.data.amount,
-          cart  : data.data.medicines
+          status: data.data.status || 'Pending',
+          amount: data.data.amount || 0,
+          cart  : data.data.medicines || []
          });
       });
     }

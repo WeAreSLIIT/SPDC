@@ -15,21 +15,25 @@ router.get("/:id", (req, res) => {
 });
 
 router.get("/username/:username", (req, res) => {
-    Order.findOne({username:req.params.username,status:'Pending'}).then(order=>{
+    Order.findOne({ username: req.params.username, status: 'Pending' }).then(order => {
         res.send(order);
     });
 });
 
 router.post("/", (req, res) => {
-    Order.findOneAndUpdate({username:req.body.username,status:'Pending'},req.body).then(()=>{
-        Order.findOne({username:req.body.username,status:'Pending'}).then(order=>{
-            res.send(order);
-        });
-    }).catch(()=>{
 
-        Order.create(req.body).then((order)=>{
-            res.send(order);
-        });
+    Order.findOneAndUpdate({ username: req.body.username, status: 'Pending' }, req.body).then((data) => {
+        
+        if (data !== null) {
+            Order.findOne({ username: req.body.username, status: 'Pending' }).then(order => {
+                res.send(order);
+            });
+        }
+        else {
+            Order.create(req.body).then((order) => {
+                res.send(order);
+            });
+        }
     });
 
 });

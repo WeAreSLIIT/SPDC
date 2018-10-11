@@ -3,7 +3,7 @@ import { Row, Col, Button, InputGroup, InputGroupAddon, InputGroupText, Input, C
 import StripeCheckout from 'react-stripe-checkout';
 const render = function () {
     let cartItems;
-    if (this.state.cart.length > 0) {
+    if (this.state.cart && this.state.cart.length > 0) {
         cartItems = this.state.cart.map(i => {
             return (
                 <tr key={i.id}>
