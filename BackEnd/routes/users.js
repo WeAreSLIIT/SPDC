@@ -29,7 +29,7 @@ router.get("/",(req,res)=>{
 });
 
 router.get("/:username",(req,res)=>{
-    User.find({id:req.params.id}).then((user)=>{
+    User.find({username:req.params.username}).then((user)=>{
         res.send(user);
     });
 });
@@ -46,14 +46,14 @@ router.post("/",(req,res)=>{
 });
 
 router.delete("/:username",(req,res)=>{
-    User.findOneAndRemove({id:req.params.id}).then((user)=>{
+    User.findOneAndRemove({username:req.params.username}).then((user)=>{
         res.send(user);
     });
 });
 
 router.put("/:username",(req,res)=>{
-    User.findOneAndUpdate(({id:req.params.id}),req.body).then(()=>{
-        User.find({id:req.params.id}).then((user)=>{
+    User.findOneAndUpdate(({username:req.params.username}),req.body).then(()=>{
+        User.find({username:req.params.username}).then((user)=>{
             res.send(user);
         });
     });
