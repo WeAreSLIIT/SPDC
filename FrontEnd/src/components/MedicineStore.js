@@ -8,7 +8,7 @@ class MedicineStore extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'ramith',
+      username: localStorage.getItem('username') || 'demo',
       status : 'Pending',
       qty: [],
       modal: false,
@@ -19,8 +19,8 @@ class MedicineStore extends Component {
 
     this.qty = React.createRef();
     this.toggle = this.toggle.bind(this);
-
   }
+
 
   addToCart(id, e) {
     e.preventDefault();
