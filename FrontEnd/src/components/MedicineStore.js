@@ -9,7 +9,7 @@ class MedicineStore extends Component {
     super(props);
     this.state = {
       username: localStorage.getItem('username') || 'demo',
-      status : 'Pending',
+      status: 'Pending',
       qty: [],
       modal: false,
       medicines: [],
@@ -41,11 +41,11 @@ class MedicineStore extends Component {
   }
 
   onToken = (token) => {
-    if(token){
-      axios.post(config.api + 'orders/paid/'+this.state.username,token).then(data => {
+    if (token) {
+      axios.post(config.api + 'orders/paid/' + this.state.username, token).then(data => {
         this.setState({
-          cart:[],
-          amount:0
+          cart: [],
+          amount: 0
         });
         this.toggle();
       });
@@ -92,20 +92,25 @@ class MedicineStore extends Component {
   }
 
   loadMedicineList() {
-    axios.get(config.api + 'medicines').then(data => {
-      this.setState({ medicines: data.data });
-    });
+    return new Promise((resolve)=>{
+      axios.get(config.api + 'medicines').then(data => {
+        this.setState({ medicines: data.data });
+        resolve();
+      });
+    }); 
   }
 
-  loadCart(){
-    if(this.state.username){
-      axios.get(config.api + 'orders/username/'+this.state.username).then(data => {
-        console.log(data);
-        this.setState({ 
-          status: data.data.status || 'Pending',
-          amount: data.data.amount || 0,
-          cart  : data.data.medicines || []
-         });
+  loadCart() {
+    if (this.state.username) {
+      axios.get(config.api + 'orders/username/' + this.state.username).then(data => {
+        if (data) {
+          console.log(data);
+          this.setState({
+            status: data.data.status || 'Pending',
+            amount: data.data.amount || 0,
+            cart: data.data.medicines || []
+          });
+        }
       });
     }
   }
@@ -124,13 +129,16 @@ class MedicineStore extends Component {
 
   }
   componentWillUnmount() {
-    this.loadMedicineList();
-    this.loadCart();
+    this.loadMedicineList().then(()=>{
+      this.loadCart();
+    });
+    
   }
 
   componentDidMount() {
-    this.loadMedicineList();
-    this.loadCart();
+    this.loadMedicineList().then(()=>{
+      this.loadCart();
+    });
   }
 
   render = medicineStore;
