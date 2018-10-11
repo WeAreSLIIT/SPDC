@@ -28,7 +28,7 @@ class UserView extends Component {
 
     onView(username) {
         console.log(username);
-        this.props.history.push(`/userProfile/`+username)
+        this.props.history.push(`/UserProfile/`+username)
     }
 
     render() {

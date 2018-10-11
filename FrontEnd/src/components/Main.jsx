@@ -10,6 +10,7 @@ import ViewUser from './ViewUser';
 import UserProfile from './UserProfile';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Switch from 'react-router-dom/Switch';
+
 const render = function () {
 
   return (
@@ -18,20 +19,27 @@ const render = function () {
         <div>
         <Navigation></Navigation>
         <Container>
-          <Switch>
-          
-            <Route path="/SignIn" component={SignIn} />
-            <Route path="/SignUp" component={SignUp} />
-            <Route path="/Medicine/List" component={MedicineList} />  
-            <Route path="/Medicine/:id" component={MedicineNew} />
-            <Route path="/Store" component={MedicineStore} /> 
-            <Route path="/Users" component={ViewUser} />
-            <Route path="/UserProfile/:username" component={UserProfile} />
-
-             
-          
-          </Switch>
-
+        {
+          (this.auth.isLoggedIn) ? (
+            (this.auth.isAdmin) ? (
+              <Switch>
+                <Route path="/" component={ViewUser} />
+                <Route path="/Medicine/List" component={MedicineList} />  
+                <Route path="/Medicine/:id" component={MedicineNew} />
+                <Route path="/UserProfile/:username" component={UserProfile} />
+              </Switch>
+            ) : (
+              <Switch>
+                <Route path="/" component={MedicineStore} /> 
+              </Switch>
+            )
+          ) : (
+            <Switch>
+              <Route path="/" component={SignIn} />
+              <Route path="/SignUp" component={SignUp} />
+            </Switch>
+          )
+        } 
         </Container>
         </div>
       </Router>

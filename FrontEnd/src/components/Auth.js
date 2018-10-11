@@ -8,10 +8,11 @@ export default class AuthService {
         } else {
             localStorage.setItem('loggedIn',false);
         }
+        window.location.href = '/';
     }
 
     get isLoggedIn() {
-        return localStorage.getItem('loggedIn');
+        return (localStorage.getItem('loggedIn')  === 'true') ? true : false;
     }
 
     get username() {
@@ -25,9 +26,9 @@ export default class AuthService {
     }
 
     get isAdmin() {
-
+        
         if(this.isLoggedIn) {
-            return localStorage.getItem('admin');
+            return (localStorage.getItem('admin')  === 'true') ? true : false;
         } else {
             return false;
         }

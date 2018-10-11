@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from "axios";
 import config from '../config/config' ;
 
@@ -60,7 +60,7 @@ class UserProfile extends Component {
         .then(response => {
             console.log(response);
             alert('User successfully Deleted');
-            this.props.history.push('/users');
+            this.props.history.push('/');
         })
         .catch(error => {
             console.log(error);
@@ -111,7 +111,7 @@ class UserProfile extends Component {
                                             </div>
 
                                             <div className="col-lg mt-3">
-                                                <Link to='/Users'><input type="button" className="btn btn-secondary btn-block" value="Back"/></Link>
+                                                <Link to='/'><input type="button" className="btn btn-secondary btn-block" value="Back"/></Link>
                                             </div>
                                         </div>
 
