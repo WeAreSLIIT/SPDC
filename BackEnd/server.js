@@ -10,7 +10,7 @@ const users =require('./routes/users');
 const points =require('./routes/points');
 
 const config = require('./config/config');
-
+app.use(cors());
 app.use(bodyParser.json());
 mongoose.connect (config.db, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
@@ -20,7 +20,7 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", err => {
     console.log(`database connection failed ${err}`);
 });
-app.use(cors());
+
 
 app.get("/",(req,res)=>{
     res.send("Hellow World");

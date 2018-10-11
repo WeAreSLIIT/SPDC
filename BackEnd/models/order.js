@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const Schema  = mongoose.Schema;
 
 
@@ -28,6 +29,14 @@ const OrderSchema = new Schema ({
             enum : ['Pending','Completed','Paid','Delivered'],
     }
 
+});
+
+autoIncrement.initialize(mongoose.connection);
+OrderSchema.plugin(autoIncrement.plugin, {
+    model: 'order',
+    field: 'id',
+    startAt: 1,
+    incrementBy: 1
 });
 
 const Order = mongoose.model('order',OrderSchema);

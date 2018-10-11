@@ -24,10 +24,12 @@ const render = function () {
             <Route path="/SignUp" component={SignUp} />
             <Route path="/Medicine/List" component={MedicineList} />  
             <Route path="/Medicine/:id" component={MedicineNew} />
-            <Route path="/Store" component={MedicineStore} />
+            <Route path="/Store" component={MedicineStore} /> 
             <Route path="/Users" component={ViewUser} />
             <Route path="/UserProfile/:username" component={UserProfile} />
 
+             
+          
           </Switch>
 
         </Container>
